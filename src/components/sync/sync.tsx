@@ -1,13 +1,10 @@
 import { useState } from "react";
-import useCheckConnection from "../../lib/useCheckConnection";
 import { IUser } from "../../lib/types";
 import useLocalStorage from "../../lib/useLocalStorage";
 import UserForm from "./user-form";
 import SyncPanel from "./sync-panel";
 
 export default function Sync() {
-  const isOnline = useCheckConnection();
-
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -15,65 +12,46 @@ export default function Sync() {
   const [user, saveUser] = useLocalStorage<IUser | null>("user", null);
   const [userForm, setUserForm] = useState(false);
 
-  const [modal, setModal] = useState(false);
-
-  console.log(success);
-
   return (
-    <div className="relative">
-      <button
-        onClick={() => setModal(!modal)}
-        className="bg-[#282828] border border-[#3F3F3F] rounded-md px-5 py-1"
-      >
-        {!isOnline ? "No connection" : "Sync"}
-      </button>
+    <>
+      <p className="w-full text-center">
+        {user ? user.name : "Нет пользователя"}
+      </p>
 
-      {isOnline && (
+      {user ? (
+        <SyncPanel
+          user={user}
+          setLoading={setLoading}
+          setSuccess={setSuccess}
+          setError={setError}
+        />
+      ) : (
         <>
-          {modal && (
-            <div className="absolute left-0 top-full translate-y-2 w-[280px] bg-[#282828] border border-[#3F3F3F] p-4 rounded-md shadow-lg z-10">
-              <p className="w-full text-center">
-                {user ? user.name : "Нет пользователя"}
-              </p>
-
-              {user ? (
-                <SyncPanel
-                  user={user}
-                  setLoading={setLoading}
-                  setSuccess={setSuccess}
-                  setError={setError}
-                />
-              ) : (
-                <>
-                  {userForm ? (
-                    <UserForm
-                      saveUser={saveUser}
-                      setLoading={setLoading}
-                      setSuccess={setSuccess}
-                      setError={setError}
-                    />
-                  ) : (
-                    <>
-                      <button
-                        onClick={() => setUserForm(true)}
-                        className="w-full p-2 mt-4 bg-[#76B9ED] rounded-md text-black"
-                      >
-                        Войти
-                      </button>
-                    </>
-                  )}
-                </>
-              )}
-              {loading && <Loader />}
-
-              {success && <div className="mt-4">{success}</div>}
-
-              {error && <div className="mt-4 text-red-500">{error}</div>}
-            </div>
+          {userForm ? (
+            <UserForm
+              saveUser={saveUser}
+              setLoading={setLoading}
+              setSuccess={setSuccess}
+              setError={setError}
+            />
+          ) : (
+            <>
+              <button
+                onClick={() => setUserForm(true)}
+                className="w-full p-2 mt-4 bg-[#76B9ED] rounded-md text-black"
+              >
+                Войти
+              </button>
+            </>
           )}
         </>
       )}
-    </div>
+      {loading && <Loader />}
+
+      {success && <div className="mt-4">{success}</div>}
+
+      {error && <div className="mt-4 text-red-500">{error}</div>}
+    </>
   );
 }
 
