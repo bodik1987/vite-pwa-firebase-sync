@@ -46,50 +46,11 @@ export default function Sync() {
           )}
         </>
       )}
-      {loading && <Loader />}
+      {loading && <div className="mt-4">Loading...</div>}
 
       {success && <div className="mt-4">{success}</div>}
 
       {error && <div className="mt-4 text-red-500">{error}</div>}
     </>
-  );
-}
-
-function Loader() {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      xmlSpace="preserve"
-      viewBox="0 0 54 20"
-      className="mt-5 max-w-10"
-    >
-      <circle cx="6" cy="10" r="6" className="fill-white">
-        <animate
-          attributeName="opacity"
-          begin=".1"
-          dur="1s"
-          repeatCount="indefinite"
-          values="0;1;0"
-        />
-      </circle>
-      <circle cx="26" cy="10" r="6" className="fill-white">
-        <animate
-          attributeName="opacity"
-          begin=".2"
-          dur="1s"
-          repeatCount="indefinite"
-          values="0;1;0"
-        />
-      </circle>
-      <circle cx="46" cy="10" r="6" className="fill-white">
-        <animate
-          attributeName="opacity"
-          begin=".3"
-          dur="1s"
-          repeatCount="indefinite"
-          values="0;1;0"
-        />
-      </circle>
-    </svg>
   );
 }
