@@ -1,7 +1,12 @@
 {
   "name": "vite-pwa-firebase-sync",
   "short_name": "vite-pwa-firebase-sync",
-  "description": "vite-pwa-firebase-sync",
+  "theme_color": "#202020",
+  "background_color": "#202020",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/vite-pwa-firebase-sync/",
+  "start_url": "/vite-pwa-firebase-sync/",
   "screenshots": [
     {
       "src": "320.png",
@@ -43,11 +48,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "theme_color": "#f5f5f5",
-  "background_color": "#f5f5f5",
-  "display": "standalone",
-  "scope": "/vite-pwa-firebase-sync/",
-  "start_url": "/vite-pwa-firebase-sync/",
-  "orientation": "portrait"
+  ]
 }
