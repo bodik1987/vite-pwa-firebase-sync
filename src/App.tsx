@@ -1,6 +1,6 @@
-import { useLocalStorage } from "usehooks-ts";
 import Sync from "./components/sync/sync";
 import { Item } from "./lib/types";
+import useLocalStorage from "./lib/useLocalStorage";
 
 type Props = {};
 

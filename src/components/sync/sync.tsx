@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useLocalStorage } from "usehooks-ts";
 import useCheckConnection from "../../lib/useCheckConnection";
 import { IUser } from "../../lib/types";
+import useLocalStorage from "../../lib/useLocalStorage";
 import UserForm from "./user-form";
 import SyncPanel from "./sync-panel";
 

@@ -1,6 +1,6 @@
 import { child, get, ref, remove, set } from "firebase/database";
 import { DATABASE, RD_PROJECT_ITEMS, RD_PROJECT_USERS } from "../../firebase";
-import { useLocalStorage } from "usehooks-ts";
+import useLocalStorage from "../../lib/useLocalStorage";
 import { Item, IUser } from "../../lib/types";
 
 type Props = {
