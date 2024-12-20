@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-[#202020] text-[#FDFDFD];
+}
+
+input {
+  @apply outline-none;
+}
